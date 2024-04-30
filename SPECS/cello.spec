@@ -1,37 +1,36 @@
 Name:           cello
-Version:        
+Version:        1.0
 Release:        1%{?dist}
-Summary:        
+Summary:        Hello World example implemented in C
 
-License:        
-URL:            
-Source0:        
+License:        GPLv3+
+URL:            https://www.example.com/%{name}
+Source0:        https://www.example.com/%{name}/releases/%{name}-%{version}.tar.gz
 
-BuildRequires:  
-Requires:       
+Patch0:         cello-output-first-patch.patch
+
+BuildRequires:  gcc
+BuildRequires:  make
 
 %description
-
+The long-tail description for our Hello World Example implemented in
+C.
 
 %prep
-%autosetup
+%setup -q
 
+%patch 0
 
 %build
-%configure
-%make_build
-
+make %{?_smp_mflags}
 
 %install
 %make_install
 
-
 %files
-%license add-license-file-here
-%doc add-docs-here
-
-
+%license LICENSE
+%{_bindir}/%{name}
 
 %changelog
-* Tue Apr 30 2024 Jeffrey Bucher <jeffiscow@fedoraproject.org>
-- 
+* Tue Apr 30 2024 Jeffrey Bucher <jeffiscow@fedoraproject.org> - 0.1-1
+- First cello package 
